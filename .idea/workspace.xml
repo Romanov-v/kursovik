@@ -5,13 +5,17 @@
       <config projectName="untitled" targetName="untitled" />
     </generated>
   </component>
-  <component name="CMakeSettings">
+  <component name="CMakeSettings" AUTO_RELOAD="true">
     <configurations>
       <configuration PROFILE_NAME="Debug" CONFIG_NAME="Debug" />
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="88f4565c-e64b-4140-9592-676c8ceabef4" name="Default Changelist" comment="" />
+    <list default="true" id="88f4565c-e64b-4140-9592-676c8ceabef4" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/main.c" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -40,11 +44,12 @@
   </component>
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/cmake-build-debug" />
     </key>
   </component>
@@ -65,7 +70,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1584469632308</updated>
-      <workItem from="1584469637590" duration="1747000" />
+      <workItem from="1584469637590" duration="3677000" />
     </task>
     <servers />
   </component>
@@ -73,30 +78,43 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="104" y="52" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584469814913">
-      <screen x="0" y="23" width="1280" height="735" />
+    <state x="240" y="55" key="#New_File_Extensions" timestamp="1584471938833">
+      <screen x="0" y="23" width="1280" height="733" />
     </state>
+    <state x="240" y="55" key="#New_File_Extensions/0.23.1280.733@0.23.1280.733" timestamp="1584471938833" />
+    <state x="104" y="52" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1584473136954">
+      <screen x="0" y="23" width="1280" height="734" />
+    </state>
+    <state x="104" y="52" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1280.734@0.23.1280.734" timestamp="1584473136954" />
     <state x="104" y="52" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1280.735@0.23.1280.735" timestamp="1584469814913" />
-    <state width="1218" height="170" key="GridCell.Tab.0.bottom" timestamp="1584470580327">
+    <state width="1218" height="170" key="GridCell.Tab.0.bottom" timestamp="1584473377880">
       <screen x="0" y="23" width="1280" height="734" />
     </state>
-    <state width="1218" height="170" key="GridCell.Tab.0.bottom/0.23.1280.734@0.23.1280.734" timestamp="1584470580327" />
+    <state width="1218" height="170" key="GridCell.Tab.0.bottom/0.23.1280.733@0.23.1280.733" timestamp="1584472845896" />
+    <state width="1218" height="170" key="GridCell.Tab.0.bottom/0.23.1280.734@0.23.1280.734" timestamp="1584473377880" />
     <state width="1218" height="170" key="GridCell.Tab.0.bottom/0.23.1280.735@0.23.1280.735" timestamp="1584470409322" />
-    <state width="1218" height="170" key="GridCell.Tab.0.center" timestamp="1584470580325">
+    <state width="1218" height="170" key="GridCell.Tab.0.center" timestamp="1584473377880">
       <screen x="0" y="23" width="1280" height="734" />
     </state>
-    <state width="1218" height="170" key="GridCell.Tab.0.center/0.23.1280.734@0.23.1280.734" timestamp="1584470580325" />
+    <state width="1218" height="170" key="GridCell.Tab.0.center/0.23.1280.733@0.23.1280.733" timestamp="1584472845895" />
+    <state width="1218" height="170" key="GridCell.Tab.0.center/0.23.1280.734@0.23.1280.734" timestamp="1584473377880" />
     <state width="1218" height="170" key="GridCell.Tab.0.center/0.23.1280.735@0.23.1280.735" timestamp="1584470409322" />
-    <state width="1218" height="170" key="GridCell.Tab.0.left" timestamp="1584470580323">
+    <state width="1218" height="170" key="GridCell.Tab.0.left" timestamp="1584473377879">
       <screen x="0" y="23" width="1280" height="734" />
     </state>
-    <state width="1218" height="170" key="GridCell.Tab.0.left/0.23.1280.734@0.23.1280.734" timestamp="1584470580323" />
+    <state width="1218" height="170" key="GridCell.Tab.0.left/0.23.1280.733@0.23.1280.733" timestamp="1584472845894" />
+    <state width="1218" height="170" key="GridCell.Tab.0.left/0.23.1280.734@0.23.1280.734" timestamp="1584473377879" />
     <state width="1218" height="170" key="GridCell.Tab.0.left/0.23.1280.735@0.23.1280.735" timestamp="1584470409321" />
-    <state width="1218" height="170" key="GridCell.Tab.0.right" timestamp="1584470580326">
+    <state width="1218" height="170" key="GridCell.Tab.0.right" timestamp="1584473377880">
       <screen x="0" y="23" width="1280" height="734" />
     </state>
-    <state width="1218" height="170" key="GridCell.Tab.0.right/0.23.1280.734@0.23.1280.734" timestamp="1584470580326" />
+    <state width="1218" height="170" key="GridCell.Tab.0.right/0.23.1280.733@0.23.1280.733" timestamp="1584472845896" />
+    <state width="1218" height="170" key="GridCell.Tab.0.right/0.23.1280.734@0.23.1280.734" timestamp="1584473377880" />
     <state width="1218" height="170" key="GridCell.Tab.0.right/0.23.1280.735@0.23.1280.735" timestamp="1584470409322" />
+    <state x="149" y="29" key="SettingsEditor" timestamp="1584471689971">
+      <screen x="0" y="23" width="1280" height="733" />
+    </state>
+    <state x="149" y="29" key="SettingsEditor/0.23.1280.733@0.23.1280.733" timestamp="1584471689971" />
     <state x="319" y="223" key="com.intellij.ide.util.TipDialog" timestamp="1584469636494">
       <screen x="0" y="23" width="1280" height="735" />
     </state>

@@ -1,48 +1,14 @@
 #include <stdio.h>
 #include <assert.h>
 #include <unistd.h>
-#define LEN 256
-#define CHUNK 200
-#define assertmsg(x, msg) assert(((void) msg, x))
-struct myString{
-	int size;
-	char* data;
-};
-typedef struct myString Struct;
 
-Struct readinput()
-{
-
-	char* input = NULL;
-	char tempbuf[CHUNK];
-	size_t inputlen = 0, templen = 0;
-	do {
-		fgets(tempbuf, CHUNK, stdin);
-		templen = strlen(tempbuf);
-		input = realloc(input, inputlen+templen);
-		strcpy(input+inputlen, tempbuf);
-		inputlen += templen;
-	} while (templen==CHUNK-1 && tempbuf[CHUNK-2]!='\n');
-
-	Struct out;
-	input[inputlen - 1] = 0;
-	out.size = inputlen - 1;
-	out.data = input;
-
-	return out;
-}
-int writebyte(FILE *f, char* c){
-	char buffer_out[1];
-	buffer_out[0] = c;
-	fwrite(buffer_out, 1, 1, f);
-	fclose(f);
-	return 0;
-	}
+#include "Gost.h"
+#include "util.h"
 
 
 int main (int argc, char** argv)
 {
-	assertmsg(argc > 1, "введите имя файла");
+	assert(argc > 1);
 	assert( (access(argv[1], F_OK)) != -1 && "файла не существует") ;
 
 	FILE * f;
@@ -71,6 +37,4 @@ int main (int argc, char** argv)
 	fclose(f);
 	return 0;
 }
-.idea/
-CMakeLists.txt
-cmake-build-debug/
+
