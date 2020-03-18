@@ -5,6 +5,9 @@
 #ifndef UNTITLED_UTIL_H
 #define UNTITLED_UTIL_H
 
-int writebyte(FILE *f, char* c);
-
+#include <stdio.h>
+long int findSize(char file_name[]);
+int writebyte(char * filename, char* c);
+int algorithm(char * filename, char c[], int sizeOfBytes);
+int readFileBytes(char* filename);
 #endif //UNTITLED_UTIL_H

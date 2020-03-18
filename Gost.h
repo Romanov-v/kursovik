@@ -5,8 +5,8 @@
 #ifndef UNTITLED_GOST_H
 #define UNTITLED_GOST_H
 
-
-
-int test(int a );
+#include "util.h"
+#include <stdio.h>
+int gost(char * filename);
 
 #endif //UNTITLED_GOST_H
