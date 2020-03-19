@@ -67,7 +67,7 @@ int readFileBytes(char *filename) {
     int size = findSize(filename);
     printf("[");
     for(int i = 0; i < size; i ++)
-        printf("%x,", bytes[i]);
+        printf("%x ", bytes[i]);
     printf("]\n");
     return 0;
 }

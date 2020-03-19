@@ -3,4 +3,4 @@ project(untitled C)
 
 set(CMAKE_C_STANDARD 99)
 
-add_executable(main.c Gost.c Gost.h util.c util.h)
+add_executable(main main.c gost.c navso.c vsitr.c shnauder.c mashingAlgos.h util.c util.h)
