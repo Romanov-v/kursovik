@@ -13,7 +13,6 @@ int main (int argc, char** argv)
     assert( (access(argv[1], F_OK)) != -1 && "файла не существует") ;
 
         printf("Do you want to erase information with your data? \n 1 - yes 2 - no \n");
-
         int h;
         scanf("%d", &h);
         if (h == 1) {
