@@ -3,10 +3,9 @@
 //
 #include "util.h"
 
-long int findSize(char file_name[])
-{
+long int findSize(char file_name[]) {
     // opening the file in read mode
-    FILE* fp = fopen(file_name, "r");
+    FILE *fp = fopen(file_name, "r");
 
     // checking if the file exist or not
     if (fp == NULL) {
@@ -25,8 +24,8 @@ long int findSize(char file_name[])
     return res;
 }
 
-int writebyte(char * filename, char *c) {
-    FILE* f = fopen(filename, "w");
+int writebyte(char *filename, char *c) {
+    FILE *f = fopen(filename, "w");
     char buffer_out[1];
     buffer_out[0] = c;
     fwrite(buffer_out, 1, 1, f);
@@ -34,38 +33,41 @@ int writebyte(char * filename, char *c) {
     return 0;
 }
 
-int algorithm(char * filename, char c[], int sizeOfBytes) {
-    FILE *file = fopen(filename, "w");
+
+int algorithm(char *filename, char c[], int sizeOfBytes) {
     int size = findSize(filename);
-    printf("{}/n", size);
     readFileBytes(filename);
-    char bytes[size];
-    fgets(bytes, size, file);
-    printf("{%d}\n", size);
     for (int j = 0; j < sizeOfBytes; j++) {
+        FILE *file = fopen(filename, "wb");
         for (int i = 0; i < size; i++) {
-            char newbytes[] = {c[j]};
             fseek(file, i, SEEK_SET);
-            fwrite(newbytes, sizeof(newbytes), 1, file);
+            char tmp = c[j];
+            fputs(&tmp, file);
         }
+        fclose(file);
         readFileBytes(filename);
+
     }
-    fclose(file);
 }
 
-int readFileBytes(char* filename) {
-    FILE* f = fopen(filename, "r");
-    char *buffer;
-    long filelen;
+char *readFileToBytesArray(const char *name) {
+    FILE *fl = fopen(name, "r");
+    fseek(fl, 0, SEEK_END);
+    long len = ftell(fl);
+    char *ret = malloc(len);
+    memset(ret, 0, sizeof(ret));
+    fseek(fl, 0, SEEK_SET);
+    fread(ret, 1, len, fl);
+    fclose(fl);
+    return ret;
+}
 
-
-
-    buffer = (char *) malloc(filelen * sizeof(char));
-    fread(buffer, filelen, 1, f);
-
-    for (int i = 0; i < filelen; i++)
-        printf("%hhx ", buffer[i]);
-    printf("\n");
-    fclose(f);
+int readFileBytes(char *filename) {
+    char *bytes = readFileToBytesArray(filename);
+    int size = findSize(filename);
+    printf("[");
+    for(int i = 0; i < size; i ++)
+        printf("%x,", bytes[i]);
+    printf("]\n");
     return 0;
 }
