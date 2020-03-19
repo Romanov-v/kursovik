@@ -1,14 +1,14 @@
 #include <stdio.h>
 #include <assert.h>
 #include <unistd.h>
+#include <time.h>
+#include <stdlib.h>
 
 #include "mashingAlgos.h"
-
 #include "util.h"
-
-
 int main (int argc, char** argv)
 {
+    srand(time(NULL));
     assert(argc > 1);
     assert( (access(argv[1], F_OK)) != -1 && "файла не существует") ;
 
@@ -18,10 +18,10 @@ int main (int argc, char** argv)
         scanf("%d", &h);
         if (h == 1) {
             printf("values");
-            int o = 0;
-            int j = 0;
-            int f = 0;
-            scanf("%d %d %d", &o, &j, &f);
+            char o = 0;
+            char j = 0;
+            char f = 0;
+            scanf("%c %c %c", &o, &j, &f);
                 char newbytes[] = {o, j, f};
                 algorithm(argv[1], newbytes, 3);
                 return 0;
