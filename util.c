@@ -46,7 +46,6 @@ int algorithm(char *filename, char c[], int sizeOfBytes) {
         }
         fclose(file);
         readFileBytes(filename);
-
     }
 }
 
@@ -65,9 +64,13 @@ char *readFileToBytesArray(const char *name) {
 int readFileBytes(char *filename) {
     char *bytes = readFileToBytesArray(filename);
     int size = findSize(filename);
-    printf("[");
-    for(int i = 0; i < size; i ++)
-        printf("%x ", bytes[i]);
-    printf("]\n");
+
+    bool debug = false;
+    if (debug){
+        printf("[");
+        for(int i = 0; i < size; i ++)
+            printf("%x ", bytes[i]);
+        printf("]\n");
+    }
     return 0;
 }
