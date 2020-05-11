@@ -6,7 +6,7 @@
 #define UNTITLED_UTIL_H
 
 #include <stdio.h>
-
+#include "stdbool.h"
 long int findSize(char file_name[]);
 
 int writebyte(char *filename, char *c);

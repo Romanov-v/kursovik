@@ -21,8 +21,8 @@ int main (int argc, char** argv)
             char j = 0;
             char f = 0;
             scanf("%c %c %c", &o, &j, &f);
-                char newbytes[] = {o, j, f};
-                algorithm(argv[1], newbytes, 3);
+                char newBytes[] = {o, j, f};
+                algorithm(argv[1], newBytes, 3);
                 return 0;
 
         } else if (h > 1)
