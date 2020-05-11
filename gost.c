@@ -1,4 +1,3 @@
-
 #include "mashingAlgos.h"
 
 int gost(char * filename)

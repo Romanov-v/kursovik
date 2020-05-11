@@ -1,6 +1,3 @@
-//
-// Created by MacBook Pro on 17/03/2020.
-//
 #include "util.h"
 
 long int findSize(char file_name[]) {
@@ -33,7 +30,7 @@ int writebyte(char *filename, char *c) {
     return 0;
 }
 
-
+// c = {0x10, 0x20, 0x30}, sizeOfBytes = 3
 int algorithm(char *filename, char c[], int sizeOfBytes) {
     int size = findSize(filename);
     readFileBytes(filename);

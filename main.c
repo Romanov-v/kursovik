@@ -40,12 +40,7 @@ int main (int argc, char** argv)
                 navso(argv[1]);
             }
             return 0;
-
-
-
     }
-
-
     return 0;
 }
 
