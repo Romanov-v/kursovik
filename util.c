@@ -73,8 +73,7 @@ int algorithm(char *filename, char c[], int sizeOfBytes) {
     return 0;
 }
 
-int atoi(const char *str) {
-    int num = 0;
+int my_atoi(const char *str, int *num) {
     int i = 0;
     bool isNegetive = false;
     if (str[i] == '-') {
@@ -82,30 +81,38 @@ int atoi(const char *str) {
         i++;
     }
     while (str[i] && (str[i] >= '0' && str[i] <= '9')) {
-        num = num * 10 + (str[i] - '0');
+        *num = *num * 10 + (str[i] - '0');
         i++;
     }
-    if (isNegetive) num = -1 * num;
-    return num;
+    if (isNegetive) *num = -1 * *num;
+
+    return 0;
 }
 
-struct myString readinput() {
+int readinput(struct myString *out) {
+    int status = 0;
     char *input = NULL;
     char tempbuf[CHUNK];
     size_t inputlen = 0, templen = 0;
     do {
-        fgets(tempbuf, CHUNK, stdin);
+        if (fgets(tempbuf, CHUNK, stdin) == NULL) {
+            printf("fgets error!");
+            return -1;
+        }
 
         templen = strlen(tempbuf);
         input = realloc(input, inputlen + templen);
+        if (input == NULL) {
+            printf("realloc error!");
+            return -2;
+        }
         strcpy(input + inputlen, tempbuf);
         inputlen += templen;
     } while (templen == CHUNK - 1 && tempbuf[CHUNK - 2] != '\n');
 
-    struct myString out;
     input[inputlen - 1] = 0;
-    out.size = inputlen - 1;
-    out.data = input;
+    out->size = inputlen - 1;
+    out->data = input;
 
-    return out;
+    return 0;
 }

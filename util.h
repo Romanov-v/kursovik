@@ -14,14 +14,14 @@ long int findSize(char file_name[], int *res);
 
 int algorithm(char *filename, char c[], int sizeOfBytes);
 
-int atoi(const char* str);
+int my_atoi(const char* str, int *num);
 
 struct myString {
     int size;
     char *data;
 };
 
-struct myString readinput();
+int readinput(struct myString *out);
 
 
 #endif //UNTITLED_UTIL_H
