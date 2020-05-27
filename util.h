@@ -10,9 +10,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-long int findSize(char file_name[]);
-
-int writebyte(char *filename, char *c);
+long int findSize(char file_name[], int *res);
 
 int algorithm(char *filename, char c[], int sizeOfBytes);
 

@@ -6,7 +6,7 @@
 
 #define CHUNK 200
 
-long int findSize(char file_name[]) {
+long int findSize(char file_name[], int *res) {
     // opening the file in read mode
     FILE *fp = fopen(file_name, "r");
 
@@ -16,53 +16,76 @@ long int findSize(char file_name[]) {
         return -1;
     }
 
-    fseek(fp, 0L, SEEK_END);
+    int status = fseek(fp, 0L, SEEK_END);
+    if (status != 0) {
+        printf("fseek error!");
+        return -2;
+    }
 
     // calculating the size of the file
-    long int res = ftell(fp);
-
+    *res = ftell(fp);
+    if (res < 0) {
+        printf("ftell error!");
+        return -3;
+    }
     // closing the file
-    fclose(fp);
-
-    return res;
-}
-
-int writebyte(char *filename, char *c) {
-    FILE *f = fopen(filename, "w");
-    char buffer_out[1];
-    buffer_out[0] = c;
-    fwrite(buffer_out, 1, 1, f);
-    fclose(f);
+    status = fclose(fp);
+    if (status != 0) {
+        printf("fclose error!");
+        return -4;
+    }
     return 0;
 }
 
 
 int algorithm(char *filename, char c[], int sizeOfBytes) {
-    int size = findSize(filename);
+    int size = 0;
+    int status = findSize(filename, &size);
+    if (status != 0) {
+        printf("findSize error");
+        return -1;
+    }
     for (int j = 0; j < sizeOfBytes; j++) {
         FILE *file = fopen(filename, "wb");
-        for (int i = 0; i < size; i++) {
-            fseek(file, i, SEEK_SET);
-            char tmp = c[j];
-            fputs(&tmp, file);
+        if (file == NULL) {
+            printf("File Not Found!\n");
+            return -2;
         }
-        fclose(file);
+        for (int i = 0; i < size; i++) {
+            status = fseek(file, i, SEEK_SET);
+            if (status != 0) {
+                printf("fseek error!");
+                return -3;
+            }
+            char tmp = c[j];
+            status = fputs(&tmp, file);
+            if (status < 0) {
+                printf("fputs error!");
+                return -4;
+            }
+        }
+        status = fclose(file);
+        if (status != 0) {
+            printf("fclose error!");
+            return -5;
+        }
     }
+    return 0;
 }
 
-int atoi(const char* str){
+int atoi(const char *str) {
     int num = 0;
     int i = 0;
     bool isNegetive = false;
-    if(str[i] == '-'){
+    if (str[i] == '-') {
         isNegetive = true;
         i++;
     }
-    while (str[i] && (str[i] >= '0' && str[i] <= '9')){
+    while (str[i] && (str[i] >= '0' && str[i] <= '9')) {
         num = num * 10 + (str[i] - '0');
         i++;
     }
-    if(isNegetive) num = -1 * num;
+    if (isNegetive) num = -1 * num;
     return num;
 }
 

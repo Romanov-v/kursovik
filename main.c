@@ -11,7 +11,7 @@
 int main(int argc, char **argv) {
     srand(time(NULL));
     
-    printf("write filename you wantto be formetted\n");
+    printf("write filename you want to be formetted\n") ;
 
     char * filename = readinput().data;
     assert((access(filename, F_OK)) != -1 && "file not exist\n");
