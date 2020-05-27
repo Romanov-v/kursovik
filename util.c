@@ -3,6 +3,9 @@
 //
 #include "util.h"
 
+
+#define CHUNK 200
+
 long int findSize(char file_name[]) {
     // opening the file in read mode
     FILE *fp = fopen(file_name, "r");
@@ -36,7 +39,6 @@ int writebyte(char *filename, char *c) {
 
 int algorithm(char *filename, char c[], int sizeOfBytes) {
     int size = findSize(filename);
-    readFileBytes(filename);
     for (int j = 0; j < sizeOfBytes; j++) {
         FILE *file = fopen(filename, "wb");
         for (int i = 0; i < size; i++) {
@@ -45,32 +47,42 @@ int algorithm(char *filename, char c[], int sizeOfBytes) {
             fputs(&tmp, file);
         }
         fclose(file);
-        readFileBytes(filename);
     }
 }
 
-char *readFileToBytesArray(const char *name) {
-    FILE *fl = fopen(name, "r");
-    fseek(fl, 0, SEEK_END);
-    long len = ftell(fl);
-    char *ret = malloc(len);
-    memset(ret, 0, sizeof(ret));
-    fseek(fl, 0, SEEK_SET);
-    fread(ret, 1, len, fl);
-    fclose(fl);
-    return ret;
+int atoi(const char* str){
+    int num = 0;
+    int i = 0;
+    bool isNegetive = false;
+    if(str[i] == '-'){
+        isNegetive = true;
+        i++;
+    }
+    while (str[i] && (str[i] >= '0' && str[i] <= '9')){
+        num = num * 10 + (str[i] - '0');
+        i++;
+    }
+    if(isNegetive) num = -1 * num;
+    return num;
 }
 
-int readFileBytes(char *filename) {
-    char *bytes = readFileToBytesArray(filename);
-    int size = findSize(filename);
+struct myString readinput() {
+    char *input = NULL;
+    char tempbuf[CHUNK];
+    size_t inputlen = 0, templen = 0;
+    do {
+        fgets(tempbuf, CHUNK, stdin);
 
-    bool debug = false;
-    if (debug){
-        printf("[");
-        for(int i = 0; i < size; i ++)
-            printf("%x ", bytes[i]);
-        printf("]\n");
-    }
-    return 0;
+        templen = strlen(tempbuf);
+        input = realloc(input, inputlen + templen);
+        strcpy(input + inputlen, tempbuf);
+        inputlen += templen;
+    } while (templen == CHUNK - 1 && tempbuf[CHUNK - 2] != '\n');
+
+    struct myString out;
+    input[inputlen - 1] = 0;
+    out.size = inputlen - 1;
+    out.data = input;
+
+    return out;
 }

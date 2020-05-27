@@ -7,13 +7,23 @@
 
 #include <stdio.h>
 #include "stdbool.h"
+#include <string.h>
+#include <stdlib.h>
+
 long int findSize(char file_name[]);
 
 int writebyte(char *filename, char *c);
 
 int algorithm(char *filename, char c[], int sizeOfBytes);
 
-int readFileBytes(char *filename);
+int atoi(const char* str);
+
+struct myString {
+    int size;
+    char *data;
+};
+
+struct myString readinput();
 
 
 #endif //UNTITLED_UTIL_H

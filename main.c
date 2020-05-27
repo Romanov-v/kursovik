@@ -6,46 +6,49 @@
 
 #include "mashingAlgos.h"
 #include "util.h"
-int main (int argc, char** argv)
-{
+
+
+int main(int argc, char **argv) {
     srand(time(NULL));
-    assert(argc > 1);
-    assert( (access(argv[1], F_OK)) != -1 && "файла не существует") ;
+    
+    printf("write filename you wantto be formetted\n");
 
-        printf("Do you want to erase information with your data? \n 1 - yes 2 - no \n");
-        int h;
-        scanf("%d", &h);
-        if (h == 1) {
-            printf("values");
-            char o = 0;
-            char j = 0;
-            char f = 0;
-            scanf("%c %c %c", &o, &j, &f);
-                char newBytes[] = {o, j, f};
-                algorithm(argv[1], newBytes, 3);
-                return 0;
+    char * filename = readinput().data;
+    assert((access(filename, F_OK)) != -1 && "file not exist\n");
+    
+    printf(" Choose one of the ways \n 1 - GOST \n2 - VSITR \n3 - NAVSO \n4 - SHNAIDER \n5 - own bytes\n");
+    int g = atoi(readinput().data);
+    printf(" Do you relay want to rewrite file {%s}? ( write yes/no to continue) \n", filename);
+    
+    struct myString ans = readinput();
 
-        } else if (h > 1)
-        {
-            printf(" Choose one of the ways \n 1 - GOST 2 - VSITR 3 - NAVSO 4 - SHNAIDER \n");
-            int g;
-            scanf("%d", &g);
-            if (g == 4) {
-                shnauder(argv[1]);
-            } else if (g == 1) {
-                gost(argv[1]);
-            } else if (g == 2) {
-                vsitr(argv[1]);
-            } else {
-                navso(argv[1]);
-            }
-            return 0;
-
-
-
+    if (strcmp("yes", ans.data) != 0) {
+        printf("formatting was canceled by user\n");
+        return 0;
     }
 
-
+    switch (g) {
+        case 1:
+            gost(filename);
+            break;
+        case 2:
+            vsitr(filename);
+            break;
+        case 3:
+            navso(filename);
+            break;
+        case 4:
+            shnauder(filename);
+            break;
+        case 5:
+            printf("write your byte's values in one line\n");
+            struct myString bytes = readinput();
+            algorithm(filename, bytes.data, bytes.size);
+            break;
+        default:
+            printf("Error! no such varian to choose algorithm\n");
+    }
+    printf("file {%s} formatted", filename);
     return 0;
 }
 
