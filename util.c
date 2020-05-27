@@ -6,7 +6,7 @@
 
 #define CHUNK 200
 
-long int findSize(char file_name[], int *res) {
+int findSize(char file_name[], int *res) {
     // opening the file in read mode
     FILE *fp = fopen(file_name, "r");
 
