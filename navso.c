@@ -3,8 +3,16 @@
 
 int navso(char *filename) 
 {
-    char newbytes[] = {0x01, 0x7FFFFFF, rand() % 256,};
-    if (algorithm(filename, newbytes, 3) != 0) 
+    if (filename == NULL) {
+        int status = printf("Memory error\n");
+        if (status < 0) {
+            return 3;
+        }
+        return 4;
+    }
+
+    char newbytes[] = {0x01, 0x07, 0xFF, 0xFF, 0xFF, rand() % 256,};
+    if (algorithm(filename, newbytes, 6) != 0)
     {
         int status = printf("Error in NAVSO method");
         if ( status < 0)

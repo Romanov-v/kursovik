@@ -1,17 +1,21 @@
 
 #include "mashingAlgos.h"
 
-int gost(char * filename)
-{
+int gost(char *filename) {
+    if (filename == NULL) {
+        int status = printf("Memory error\n");
+        if (status < 0) {
+            return 3;
+        }
+        return 4;
+    }
     char newbytes[] = {0x10, 0x20, 0x30};
-    if (algorithm(filename, newbytes, 3) != 0)
-    {
-       int status = printf("Error in GOST method");
-       if (status < 0)
-       {
-       	return 1;
-       }
-       return 2;
+    if (algorithm(filename, newbytes, 3) != 0) {
+        int status = printf("Error in GOST method");
+        if (status < 0) {
+            return 1;
+        }
+        return 2;
     }
     return 0;
 }

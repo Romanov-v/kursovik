@@ -27,17 +27,26 @@ int main(int argc, char **argv)
         return 3;
     }
     char *filename = fileNameGetter.data;
-    assert((access(filename, F_OK)) != -1 && "file not exist\n");
-
-     status = printf(" Choose one of the ways \n 1 - GOST \n2 - VSITR \n3 - NAVSO \n4 - SHNAIDER \n5 - own bytes\n");
+    if ( access(filename, F_OK) == -1){
+        free(fileNameGetter.data);
+        status = printf("file not exist\n");
+        if (status < 0){
+            return 27;
+        }
+        return 28;
+    }
+    status = printf(" Choose one of the ways \n 1 - GOST \n2 - VSITR \n3 - NAVSO \n4 - SHNAIDER \n5 - own bytes\n");
     if ( status < 0)
     {
+        free(fileNameGetter.data);
         return 4;
     }
     int g = 0;
     struct myString choosed;
     if (readinput(&choosed) != 0) 
     {
+        free(fileNameGetter.data);
+
         status = printf("Error while reading filename");
         if ( status < 0)
         {
@@ -47,21 +56,24 @@ int main(int argc, char **argv)
     }
     if (my_atoi(choosed.data, &g) != 0) 
     {
-       status = printf("Error while converting string to int");
+        free(fileNameGetter.data);
+        status = printf("Error while converting string to int");
        if ( status < 0)
        {
-        return 7;
+            return 7;
        }
-        return 8;
+       return 8;
     }
     status = printf(" Do you relay want to rewrite file {%s}? ( write yes/no to continue) \n", filename);
     if ( status < 0)
     {
+        free(fileNameGetter.data);
         return 9;
     }
     struct myString ans;
     if (readinput(&ans) != 0) 
     {
+        free(fileNameGetter.data);
         status = printf("Error while reading filename");
         if (status < 0)
         {
@@ -72,6 +84,7 @@ int main(int argc, char **argv)
 
     if (strcmp("yes", ans.data) != 0) 
     {
+        free(fileNameGetter.data);
         status = printf("formatting was canceled by user\n");
         if ( status < 0)
         {
@@ -86,6 +99,8 @@ int main(int argc, char **argv)
             if (gost(filename) != 0) 
             {
                 status = printf("Gost error!");
+                free(fileNameGetter.data);
+
                 if ( status < 0)
                 {
                     return 13;
@@ -96,6 +111,7 @@ int main(int argc, char **argv)
         case 2:
             if (vsitr(filename) != 0) 
             {
+                free(fileNameGetter.data);
                 status = printf("Vsitr error!");
                 if ( status < 0)
                 {
@@ -107,6 +123,7 @@ int main(int argc, char **argv)
         case 3:
             if (navso(filename) != 0) 
             {
+                free(fileNameGetter.data);
                 status = printf("Navso error!");
                 if ( status < 0)
                 {
@@ -118,6 +135,8 @@ int main(int argc, char **argv)
         case 4:
             if (shnauder(filename) != 0) 
             {
+                free(fileNameGetter.data);
+
                 status = printf("Shnauder error!");
                 if ( status < 0)
                 {
@@ -130,11 +149,13 @@ int main(int argc, char **argv)
             status = printf("write your byte's values in one line\n");
             if ( status < 0)
             {
+                free(fileNameGetter.data);
                 return 21;
             }
             struct myString bytes;
             if (readinput(&bytes) != 0)
             {
+                free(fileNameGetter.data);
                 status = printf("Error while reading filename");
                 if ( status < 0)
                 {
@@ -144,6 +165,7 @@ int main(int argc, char **argv)
             }
             if (algorithm(filename, bytes.data, bytes.size) != 0) 
             {
+                free(fileNameGetter.data);
                 status = printf("Error in method with users own bytes");
                 if ( status < 0)
                 {
@@ -156,10 +178,13 @@ int main(int argc, char **argv)
             status = printf("Error! no such varian to choose algorithm\n");
             if ( status < 0)
             {
+                free(fileNameGetter.data);
                 return 26;
             }
+            break;
     }
     printf("file {%s} formatted", filename);
+    free(fileNameGetter.data);
     return 0;
 }
 

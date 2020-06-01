@@ -9,7 +9,7 @@
 #include "stdbool.h"
 #include <string.h>
 #include <stdlib.h>
-
+#include <stddef.h>
 int findSize(char file_name[], int *res);
 
 int algorithm(char *filename, char c[], int sizeOfBytes);
